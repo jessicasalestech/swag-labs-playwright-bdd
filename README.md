@@ -46,6 +46,20 @@ fim-a-fim (UI), aplicado ao app demo **[Swag Labs](https://www.saucedemo.com)** 
 - **Catálogo** — adicionar produtos ao carrinho (contagem no badge) e ordenação por preço.
 - **Checkout** — fluxo completo de compra até a confirmação do pedido.
 
+## 📸 Evidências
+
+Capturas de tela geradas automaticamente no final de cada cenário:
+
+| | |
+|---|---|
+| ![Login com sucesso](docs/evidencias/01-login-sucesso.png) | ![Login usuário bloqueado](docs/evidencias/02-login-usuario-bloqueado.png) |
+| ![Login credenciais inválidas](docs/evidencias/03-login-credenciais-invalidas.png) | ![Catálogo: adicionar produto](docs/evidencias/04-catalogo-adicionar-produto.png) |
+| ![Catálogo: múltiplos produtos](docs/evidencias/05-catalogo-multiplos-produtos.png) | ![Catálogo: ordenação por preço](docs/evidencias/06-catalogo-ordenacao.png) |
+| ![Checkout: compra com sucesso](docs/evidencias/07-checkout-compra-sucesso.png) | — |
+
+> 💡 As evidências são capturadas por um fixture automático (`autoScreenshot`), então
+> qualquer novo cenário passa a gerar sua evidência sem esforço adicional.
+
 ## 🔧 Pré-requisitos
 
 - Node.js **≥ 20.10**
@@ -83,6 +97,14 @@ npm run report
 npm run allure:report    # gera a partir de allure-results/
 npm run allure:open      # abre no navegador
 ```
+
+### 🌐 Relatório online (GitHub Pages)
+
+O CI publica o **Allure Report** no GitHub Pages a cada push, com link navegável:
+
+**🔗 https://jessicasalestech.github.io/swag-labs-playwright-bdd/**
+
+Sem instalar nada: é atualizado automaticamente pela pipeline (`actions/deploy-pages`).
 
 ## 🤖 CI (GitHub Actions)
 

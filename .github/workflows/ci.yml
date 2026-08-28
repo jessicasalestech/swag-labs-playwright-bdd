@@ -9,6 +9,13 @@ on:
 
 permissions:
   contents: read
+  pages: write      # publicar o Allure report no GitHub Pages
+  id-token: write   # exigido pelo actions/deploy-pages
+
+# Evita deploys simultâneos no Pages quando há pushes rápidos
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   e2e:
@@ -62,6 +69,21 @@ jobs:
           name: allure-report
           path: allure-report/
           retention-days: 14
+
+      - name: Configure GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: Upload Allure report para o GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
+      - name: Deploy Allure report no GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Upload trace de falhas
         if: failure()

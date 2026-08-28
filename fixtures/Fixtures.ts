@@ -21,6 +21,16 @@ export const test = base.extend<{
   inventoryPage: async ({ page }, use) => use(new InventoryPage(page)),
   cartPage: async ({ page }, use) => use(new CartPage(page)),
   checkoutPage: async ({ page }, use) => use(new CheckoutPage(page)),
+  // Evidência: captura screenshot no final de CADA cenário (sucesso e falha),
+  // guardado em test-results/<cenário>/evidencia.png
+  autoScreenshot: [
+    async ({ page }, use, testInfo) => {
+      await use();
+      const shot = testInfo.outputPath('evidencia.png');
+      await page.screenshot({ path: shot, fullPage: true }).catch(() => {});
+    },
+    { auto: true },
+  ],
 });
 
 export const { Given, When, Then } = createBdd(test);
