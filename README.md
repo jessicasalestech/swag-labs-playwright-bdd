@@ -1,5 +1,12 @@
 # 🧪 Swag Labs — Automação de Testes E2E (Playwright + BDD)
 
+[![CI Status](https://github.com/jessicasalestech/swag-labs-playwright-bdd/actions/workflows/ci.yml/badge.svg)](https://github.com/jessicasalestech/swag-labs-playwright-bdd/actions/workflows/ci.yml)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
+![BDD](https://img.shields.io/badge/BDD-Gherkin_pt--BR-6DB33F)
+![Allure](https://img.shields.io/badge/Allure_Report-2E9EFC)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+
 Projeto de **portfólio de QA** que demonstra um framework completo de automação de testes
 fim-a-fim (UI), aplicado ao app demo **[Swag Labs](https://www.saucedemo.com)** (Sauce Labs).
 
