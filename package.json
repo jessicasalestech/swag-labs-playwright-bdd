@@ -1,0 +1,30 @@
+{
+  "name": "swag-labs-playwright-bdd",
+  "version": "1.0.0",
+  "description": "Portfólio de automação de testes E2E — Playwright + TypeScript + playwright-bdd (Gherkin) + Allure + GitHub Actions. App alvo: Swag Labs (saucedemo.com).",
+  "author": "Jessica Sales",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=20.10"
+  },
+  "scripts": {
+    "install:browsers": "playwright install --with-deps chromium",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:grep": "playwright test --grep",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "allure:open": "allure open allure-results",
+    "allure:report": "allure generate allure-results -o allure-report --clean"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^26.4.0",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.2.1",
+    "dotenv": "^16.4.7",
+    "playwright-bdd": "^9.2.0",
+    "typescript": "^5.7.3"
+  }
+}

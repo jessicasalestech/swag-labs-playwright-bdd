@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+
+# Artefatos gerados pelo playwright-bdd (código das features)
+.features-gen/
+
+# Relatórios
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+*.zip
+
+# Segredos (nunca versionar credenciais reais)
+.env
+.env.local
+
+# Logs e SO
+*.log
+.DS_Store
+Thumbs.db
