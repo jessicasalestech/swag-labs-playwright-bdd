@@ -1,20 +1,19 @@
-# language: pt
-Funcionalidade: Login
-  Como um usuário do sistema
-  Eu quero me autenticar na aplicação
-  Para poder acessar o catálogo de produtos
+Feature: Login
+  As a system user
+  I want to authenticate to the application
+  So I can access the product catalog
 
-  Contexto:
-    Dado que estou na página de login
+  Background:
+    Given I am on the login page
 
-  Cenário: Login com usuário válido
-    Quando informo as credenciais válidas
-    Então sou direcionado para a página de produtos
+  Scenario: Login with a valid user
+    When I fill in the valid credentials
+    Then I am redirected to the products page
 
-  Cenário: Login de usuário bloqueado falha
-    Quando informo o usuário bloqueado
-    Então vejo a mensagem de erro de bloqueio
+  Scenario: Login of a blocked user fails
+    When I fill in the blocked user
+    Then I see the locked out error message
 
-  Cenário: Login com credenciais inválidas falha
-    Quando informo um usuário inválido
-    Então vejo a mensagem de credenciais inválidas
+  Scenario: Login with invalid credentials fails
+    When I fill in an invalid user
+    Then I see the invalid credentials error message

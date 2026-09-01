@@ -2,25 +2,25 @@ import { Given, When, Then } from '../fixtures/Fixtures';
 import { FIRST_NAME, LAST_NAME, POSTAL_CODE } from '../support/config';
 
 // ---------------------------------------------------------------------------
-// Steps de Checkout (features/checkout.feature)
+// Checkout steps (features/checkout.feature)
 // ---------------------------------------------------------------------------
 
-Given('acessei o carrinho de compras', async ({ inventoryPage }) => {
+Given('I accessed the shopping cart', async ({ inventoryPage }) => {
   await inventoryPage.openCart();
 });
 
-When('inicio o checkout', async ({ cartPage }) => {
+When('I start the checkout', async ({ cartPage }) => {
   await cartPage.goToCheckout();
 });
 
-When('informo os dados do cliente', async ({ checkoutPage }) => {
+When('I fill in the customer data', async ({ checkoutPage }) => {
   await checkoutPage.fillCustomerData(FIRST_NAME, LAST_NAME, POSTAL_CODE);
 });
 
-When('finalizo a compra', async ({ checkoutPage }) => {
+When('I finalize the purchase', async ({ checkoutPage }) => {
   await checkoutPage.finishPurchase();
 });
 
-Then('vejo a mensagem de pedido confirmado', async ({ checkoutPage }) => {
+Then('I see the order confirmed message', async ({ checkoutPage }) => {
   await checkoutPage.expectSuccessMessage();
 });

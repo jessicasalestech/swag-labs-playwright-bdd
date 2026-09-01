@@ -2,7 +2,7 @@ import { type Page, type Locator, expect } from '@playwright/test';
 import { PASSWORD, STANDARD_USER } from '../../support/config';
 
 /**
- * Page Object da tela de Login do Swag Labs.
+ * Page Object for the Swag Labs Login screen.
  */
 export class LoginPage {
   readonly usernameInput: Locator;
@@ -17,8 +17,8 @@ export class LoginPage {
     this.errorBox = page.locator('[data-test="error"]');
   }
 
-  /** Navega até a tela de login com retry contra erros transitórios de rede
-   *  (saucedemo ocasionalmente reseta conexões sob carga). */
+  /** Navigates to the login screen with retry against transient network errors
+   *  (saucedemo occasionally resets connections under load). */
   async open(): Promise<void> {
     const maxAttempts = 3;
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -27,7 +27,7 @@ export class LoginPage {
         return;
       } catch (error) {
         if (attempt === maxAttempts) throw error;
-        await this.page.waitForTimeout(2000 * attempt); // backoff progressivo
+        await this.page.waitForTimeout(2000 * attempt); // progressive backoff
       }
     }
   }
@@ -44,7 +44,7 @@ export class LoginPage {
     await this.loginButton.click();
   }
 
-  /** Login completo e rápido. */
+  /** Complete and fast login. */
   async login(username: string = STANDARD_USER, password: string = PASSWORD): Promise<void> {
     await this.open();
     await this.fillUsername(username);
@@ -52,7 +52,7 @@ export class LoginPage {
     await this.clickLogin();
   }
 
-  /** Retorna o texto da mensagem de erro de autenticação. */
+  /** Returns the authentication error message text. */
   async getErrorMessage(): Promise<string> {
     await expect(this.errorBox).toBeVisible();
     return (await this.errorBox.textContent()) ?? '';

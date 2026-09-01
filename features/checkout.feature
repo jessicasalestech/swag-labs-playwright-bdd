@@ -1,16 +1,15 @@
-# language: pt
-Funcionalidade: Checkout
-  Como um usuário autenticado
-  Eu quero finalizar a compra dos produtos do meu carrinho
-  Para receber a confirmação do meu pedido
+Feature: Checkout
+  As an authenticated user
+  I want to complete the purchase of the products in my cart
+  So I can get confirmation of my order
 
-  Contexto:
-    Dado que estou logado na aplicação
-    E adiciono o produto "Sauce Labs Backpack" ao carrinho
-    E acessei o carrinho de compras
+  Background:
+    Given I am logged into the application
+    And I add the product "Sauce Labs Backpack" to the cart
+    And I accessed the shopping cart
 
-  Cenário: Realizar uma compra com sucesso
-    Quando inicio o checkout
-    E informo os dados do cliente
-    E finalizo a compra
-    Então vejo a mensagem de pedido confirmado
+  Scenario: Successfully complete a purchase
+    When I start the checkout
+    And I fill in the customer data
+    And I finalize the purchase
+    Then I see the order confirmed message

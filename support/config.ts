@@ -1,8 +1,8 @@
 import 'dotenv/config';
 
 /**
- * Leitura segura de variáveis de ambiente com fallback.
- * Números/credenciais reais nunca são versionados — vêm de .env / secrets de CI.
+ * Safe reading of environment variables with a fallback.
+ * Real numbers/credentials are never versioned — they come from .env / CI secrets.
  */
 const env = (key: string, fallback: string): string => process.env[key] ?? fallback;
 

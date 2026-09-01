@@ -1,21 +1,20 @@
-# language: pt
-Funcionalidade: Catálogo de produtos
-  Como um usuário autenticado
-  Eu quero visualizar e manipular os produtos do catálogo
-  Para poder montar o meu pedido
+Feature: Product Catalog
+  As an authenticated user
+  I want to view and manage the products in the catalog
+  So I can build my order
 
-  Contexto:
-    Dado que estou logado na aplicação
+  Background:
+    Given I am logged into the application
 
-  Cenário: Adicionar produto ao carrinho
-    Quando adiciono o produto "Sauce Labs Backpack" ao carrinho
-    Então a contagem do carrinho é 1
+  Scenario: Add product to the cart
+    When I add the product "Sauce Labs Backpack" to the cart
+    Then the cart count is 1
 
-  Cenário: Adicionar múltiplos produtos ao carrinho
-    Quando adiciono o produto "Sauce Labs Backpack" ao carrinho
-    E adiciono o produto "Sauce Labs Bike Light" ao carrinho
-    Então a contagem do carrinho é 2
+  Scenario: Add multiple products to the cart
+    When I add the product "Sauce Labs Backpack" to the cart
+    And I add the product "Sauce Labs Bike Light" to the cart
+    Then the cart count is 2
 
-  Cenário: Ordenar produtos por preço (menor para maior)
-    Quando ordeno os produtos por "Price (low to high)"
-    Então o primeiro produto é "Sauce Labs Onesie"
+  Scenario: Sort products by price (low to high)
+    When I sort the products by "Price (low to high)"
+    Then the first product is "Sauce Labs Onesie"

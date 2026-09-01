@@ -1,7 +1,7 @@
 {
   "name": "swag-labs-playwright-bdd",
   "version": "1.0.0",
-  "description": "Portfólio de automação de testes E2E — Playwright + TypeScript + playwright-bdd (Gherkin) + Allure + GitHub Actions. App alvo: Swag Labs (saucedemo.com).",
+  "description": "E2E test automation portfolio — Playwright + TypeScript + playwright-bdd (Gherkin) + Allure + GitHub Actions. Target app: Swag Labs (saucedemo.com).",
   "author": "Jessica Sales",
   "license": "MIT",
   "private": true,

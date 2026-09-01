@@ -1,7 +1,7 @@
 import { type Page, type Locator, expect } from '@playwright/test';
 
 /**
- * Page Object do fluxo de Checkout (informações -> revisão -> confirmação).
+ * Page Object for the Checkout flow (information -> review -> confirmation).
  */
 export class CheckoutPage {
   readonly firstNameInput: Locator;
@@ -22,7 +22,7 @@ export class CheckoutPage {
     this.summaryTotal = page.locator('.summary_total_label');
   }
 
-  /** Preenche os dados do cliente e continua. */
+  /** Fills in the customer data and continues. */
   async fillCustomerData(firstName: string, lastName: string, postalCode: string): Promise<void> {
     await this.firstNameInput.fill(firstName);
     await this.lastNameInput.fill(lastName);
@@ -30,17 +30,17 @@ export class CheckoutPage {
     await this.continueButton.click();
   }
 
-  /** Finaliza a compra. */
+  /** Finalizes the purchase. */
   async finishPurchase(): Promise<void> {
     await this.finishButton.click();
   }
 
-  /** Valida a mensagem de sucesso do pedido. */
+  /** Validates the order success message. */
   async expectSuccessMessage(): Promise<void> {
     await expect(this.completeHeader).toHaveText('Thank you for your order!');
   }
 
-  /** Retorna o total a pagar (ex.: "Total: $43.18"). */
+  /** Returns the total amount to pay (e.g. "Total: $43.18"). */
   async getTotalLabel(): Promise<string> {
     return (await this.summaryTotal.textContent()) ?? '';
   }

@@ -8,21 +8,22 @@ import { CartPage } from '../src/pages/CartPage';
 import { CheckoutPage } from '../src/pages/CheckoutPage';
 
 /**
- * Fixtures estendidas: injeta os Page Objects no test, tornando os steps
- * concisos e reutilizáveis. É o ponto único de importação dos steps BDD.
+ * Extended fixtures: inject the Page Objects into the test, keeping steps
+ * concise and reusable. It is the single import point for the BDD steps.
  */
 export const test = base.extend<{
   loginPage: LoginPage;
   inventoryPage: InventoryPage;
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
+  autoScreenshot: void;
 }>({
   loginPage: async ({ page }, use) => use(new LoginPage(page)),
   inventoryPage: async ({ page }, use) => use(new InventoryPage(page)),
   cartPage: async ({ page }, use) => use(new CartPage(page)),
   checkoutPage: async ({ page }, use) => use(new CheckoutPage(page)),
-  // Evidência: captura screenshot no final de CADA cenário (sucesso e falha),
-  // guardado em test-results/<cenário>/evidencia.png
+  // Evidence: takes a screenshot at the end of EACH scenario (success or failure),
+  // saved in test-results/<scenario>/evidence.png
   autoScreenshot: [
     async ({ page }, use, testInfo) => {
       await use();

@@ -3,27 +3,28 @@ import { defineBddConfig } from 'playwright-bdd';
 import { BASE_URL } from './support/config';
 
 /**
- * Gera os testes a partir das features Gherkin (features/*.feature)
- * + step definitions (steps/*.ts) e salva em .features-gen/ (ignorado no git).
+ * Generates tests from the Gherkin features (features/*.feature)
+ * + step definitions (steps/*.ts) and saves them in .features-gen/ (git-ignored).
  */
 const testDir = defineBddConfig({
   features: ['features/*.feature'],
   steps: ['steps/*.ts', 'fixtures/Fixtures.ts'],
   outputDir: '.features-gen',
-  language: 'pt', // features escritas em Gherkin pt-BR
-  missingSteps: 'fail-on-gen', // trava cedo se faltar step definition
-  arityCheck: false,           // desligado p/ permitir steps por regex (singular/plural)
+  language: 'en', // features written in English Gherkin
+  missingSteps: 'fail-on-gen', // fails early if a step definition is missing
+  arityCheck: false,           // disabled to allow regex-based steps (singular/plural)
   verbose: false,
 });
 
 export default defineConfig({
   testDir,
-  // Config BDD determinística: sem IA em runtime, healing por texto exato quando necessário.
+  // Deterministic BDD config: no runtime AI, exact-text healing when needed.
   timeout: 40_000,
   expect: { timeout: 12_000 },
   fullyParallel: false,
-  // workers baixo evita rate-limit do app demo (saucedemo reseta conexões quando
-  // recebe muitos requests simultâneos). Mesma lição de sessão única do ITS+.
+  // Low worker count avoids rate-limiting on the demo app (saucedemo resets
+  // connections when it receives many simultaneous requests). Same lesson as
+  // the single-session ITS+ run.
   workers: 1,
   retries: process.env.CI ? 2 : 1,
   reporter: [

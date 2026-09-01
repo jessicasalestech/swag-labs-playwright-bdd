@@ -1,7 +1,7 @@
 import { type Page, type Locator, expect } from '@playwright/test';
 
 /**
- * Page Object da vitrine de produtos (Inventory).
+ * Page Object for the product showcase (Inventory).
  */
 export class InventoryPage {
   readonly title: Locator;
@@ -18,29 +18,29 @@ export class InventoryPage {
     this.sortSelect = page.locator('[data-test="product-sort-container"]');
   }
 
-  /** Espera a vitrine carregar e valida o título. */
+  /** Waits for the showcase to load and validates the title. */
   async expectVisible(): Promise<void> {
     await expect(this.title).toHaveText('Products');
   }
 
-  /** Retorna a lista de nomes de produtos exibidos (preservando a ordem). */
+  /** Returns the list of displayed product names (preserving their order). */
   async getProductNames(): Promise<string[]> {
     return this.productNames.allTextContents();
   }
 
-  /** Adiciona ao carrinho um produto pelo seu nome. */
+  /** Adds a product to the cart by its name. */
   async addToCart(productName: string): Promise<void> {
     const card = this.productCards.filter({ hasText: productName });
     await expect(card).toBeVisible();
     await card.locator('button.btn_primary').click();
   }
 
-  /** Ordena a lista pelo valor do select de ordenação. */
+  /** Sorts the list using the sort selector's value. */
   async sortBy(value: string): Promise<void> {
     await this.sortSelect.selectOption({ label: value });
   }
 
-  /** Retorna o total de itens exibido no badge do carrinho (vazio = 0). */
+  /** Returns the total of items shown in the cart badge (empty = 0). */
   async getCartCount(): Promise<number> {
     if (!(await this.cartBadge.isVisible())) return 0;
     return Number((await this.cartBadge.textContent()) ?? '0');

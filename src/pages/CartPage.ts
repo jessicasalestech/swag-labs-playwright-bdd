@@ -1,7 +1,7 @@
 import { type Page, type Locator, expect } from '@playwright/test';
 
 /**
- * Page Object do carrinho de compras.
+ * Page Object for the shopping cart.
  */
 export class CartPage {
   readonly title: Locator;
@@ -20,12 +20,12 @@ export class CartPage {
     await expect(this.title).toHaveText('Your Cart');
   }
 
-  /** Retorna os nomes dos itens presentes no carrinho. */
+  /** Returns the names of the items in the cart. */
   async getItemNames(): Promise<string[]> {
     return this.page.locator('.inventory_item_name').allTextContents();
   }
 
-  /** Retorna a quantidade de itens no carrinho. */
+  /** Returns the number of items in the cart. */
   async getItemCount(): Promise<number> {
     return this.cartItems.count();
   }
