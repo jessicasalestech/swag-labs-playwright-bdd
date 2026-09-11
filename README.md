@@ -1,5 +1,7 @@
 # 🧪 Swag Labs — E2E Test Automation (Playwright + BDD)
 
+[![English](https://img.shields.io/badge/English-blue?style=plastic&logo=openbadges&logoColor=white)](README.md) [![Português](https://img.shields.io/badge/Portugu%C3%AAs-green?style=plastic&logo=openbadges&logoColor=white)](README-pt-BR.md)
+
 [![CI Status](https://github.com/jessicasalestech/swag-labs-playwright-bdd/actions/workflows/ci.yml/badge.svg)](https://github.com/jessicasalestech/swag-labs-playwright-bdd/actions/workflows/ci.yml)
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
